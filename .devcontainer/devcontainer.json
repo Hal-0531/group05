@@ -1,0 +1,10 @@
+{
+    "dockerComposeFile": "docker-compose.yaml",
+    "service": "devcontainer",
+    "workspaceFolder": "/root/work",
+    "customizations": {
+        "settings": {
+            "python.defaultInterpreterPath": "/root/work/.venv/bin/python"
+        }
+    }
+}
