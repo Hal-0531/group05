@@ -12,7 +12,7 @@ def read_frame(cap):
     return cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
 
 
-def eval_videos(ref_path, dist_path, device=None, frame_stride=10):
+def eval_videos(ref_path, dist_path, device="cuda", frame_stride=10):
     if device is None:
         device = "cuda" if torch.cuda.is_available() else "cpu"
 
@@ -49,7 +49,6 @@ def eval_videos(ref_path, dist_path, device=None, frame_stride=10):
                     interpolation=cv2.INTER_AREA if dist_frame.shape[0] > ref_frame.shape[0] else cv2.INTER_LINEAR,
                 )
 
-            # [H,W,3] -> [1,3,H,W], 0-1
             ref = torch.from_numpy(ref_frame).permute(2, 0, 1).unsqueeze(0).float() / 255.0
             dist = torch.from_numpy(dist_frame).permute(2, 0, 1).unsqueeze(0).float() / 255.0
 
