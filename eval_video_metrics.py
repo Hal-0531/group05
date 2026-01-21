@@ -12,7 +12,7 @@ def read_frame(cap):
     return cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
 
 
-def eval_videos(ref_path, dist_path, device=None):
+def eval_videos(ref_path, dist_path, device=None, frame_stride=10):
     if device is None:
         device = "cuda" if torch.cuda.is_available() else "cpu"
 
@@ -29,11 +29,15 @@ def eval_videos(ref_path, dist_path, device=None):
     dist_cap = cv2.VideoCapture(dist_path)
     resized_once = False
     try:
+        frame_idx = 0
         while True:
             ref_frame = read_frame(ref_cap)
             dist_frame = read_frame(dist_cap)
             if ref_frame is None or dist_frame is None:
                 break
+            if frame_idx % frame_stride != 0:
+                frame_idx += 1
+                continue
 
             if ref_frame.shape != dist_frame.shape:
                 if not resized_once:
@@ -54,6 +58,7 @@ def eval_videos(ref_path, dist_path, device=None):
 
             mse_vals.append(F.mse_loss(ref, dist).item())
             dists_vals.append(model(ref, dist).item())
+            frame_idx += 1
     finally:
         ref_cap.release()
         dist_cap.release()
