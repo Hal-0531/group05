@@ -1,0 +1,3 @@
+[submodule "DISTS"]
+	path = DISTS
+	url = https://github.com/dingkeyan93/DISTS.git
