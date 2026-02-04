@@ -1,3 +1,6 @@
 [submodule "DISTS"]
 	path = DISTS
 	url = https://github.com/dingkeyan93/DISTS.git
+[submodule "PyTorch-Frechet-Video-Distance"]
+	path = PyTorch-Frechet-Video-Distance
+	url = https://github.com/ragor114/PyTorch-Frechet-Video-Distance.git
