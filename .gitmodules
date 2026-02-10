@@ -4,3 +4,6 @@
 [submodule "PyTorch-Frechet-Video-Distance"]
 	path = PyTorch-Frechet-Video-Distance
 	url = https://github.com/ragor114/PyTorch-Frechet-Video-Distance.git
+[submodule "1xgpt"]
+	path = 1xgpt
+	url = https://github.com/1x-technologies/1xgpt.git
