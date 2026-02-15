@@ -19,8 +19,10 @@ dependencies = [
     "mediapy==1.1.6",
     "pandas>=2.3.3",
     "piq>=0.8.0",
+    "python-dotenv>=1.2.1",
     "seaborn>=0.13.2",
     "wandb>=0.23.1",
+    "weave>=0.52.26",
     "xformers==0.0.33",
 ]
 
